@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 int main() {
   // Инициализируем и вводим высоту пирамиды
   int N;
@@ -15,15 +16,16 @@ int main() {
       std::cin >> pyramid[i][j];
     }
   }
-  // Отметка вывода
-  std::cout << "Pyramid loaded:" << '\n';
-  // Вывод данных для проверки корректности ввода
-  for (int i = 0; i < N; i++) {
+  
+  // Алгоритм вывода минимальной суммы на позицию pyramid[0][0]
+  for (int i = N - 2; i >= 0; i--) {
     for (int j = 0; j <= i; j++) {
-      std::cout << pyramid[i][j] << " ";
+      pyramid[i][j] += std::min(pyramid[i + 1][j], pyramid[i + 1][j + 1]);
     }
-    std::cout << '\n';
   }
+  
+  // Вывод минимальной суммы
+  std::cout << "Minimum amount: " << pyramid[0][0] << '\n';
 
   return 0;
 }
