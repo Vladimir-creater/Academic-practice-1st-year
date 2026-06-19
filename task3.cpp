@@ -6,25 +6,29 @@ int main() {
   int num_of_streets, num_of_requests;
   std::cin >> num_of_streets >> num_of_requests;
 
-  // Создаём список запросов
-  std::vector<std::vector<int>> queries;
+  //Массив с данными о количестве снега на улицах
+  std::vector<int> snow(num_of_streets + 1, 0);
 
-  // Сохраняем все запросы и взависимости от типа выводим информацию для проверки корректности считывания вводных данных
+  // Обработка входных данных
   for (int i = 0; i < num_of_requests; i++) {
     int type;
     std::cin >> type;
 
     if (type == 1) {
-      int street, snow;
-      std::cin >> street >> snow;
-      queries.push_back({type, street, snow});
-      std::cout << "Update: street " << street << ",snow " << snow << "mm" << '\n';
+      int street, snow_mm;
+      std::cin >> street >> snow_mm;
+      snow[street] += snow_mm;
     } else if (type == 2) {
       int street_from, street_to;
       std::cin >> street_from >> street_to;
-      queries.push_back({type, street_from, street_to});
-      std::cout << "Give inf: street from " << street_from << " to " << street_to << '\n';
+      // Пока ничего
+      std::cout << "Being developed" << '\n';
     }
+  }
+
+  // Выводим значения в списке snow для проверки обработки входных данных
+  for (int i = 0; i <= num_of_streets; i++) {
+    std::cout << i << ": " << snow[i] << '\n';
   }
 
   return 0;
