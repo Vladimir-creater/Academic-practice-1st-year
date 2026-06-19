@@ -17,11 +17,16 @@ int main() {
   std::string encrypted;
   std::cin >> encrypted;
 
-  // Выводим результат для проверки корректности ввода
-  for (int i = 0; i <= count_of_characters; i++) {
-    std::cout << Permutation[i] << " ";
+  // Находим обратную перестановку
+  std::vector<int> inverse_Permutation(count_of_characters + 1);
+  for (int i = 1; i <= count_of_characters; i++) {
+    inverse_Permutation[Permutation[i]] = i;
+  }
+
+  // Выводим обратную перестановку для проверки
+  for (int i = 1; i <= count_of_characters; i++) {
+    std::cout << inverse_Permutation[i] << " ";
   }
   std::cout << '\n';
-  std::cout << encrypted << '\n';
 
 }
