@@ -13,22 +13,23 @@ int main() {
   for (int i = 0; i < num_of_requests; i++) {
     int type;
     std::cin >> type;
-
+    // Если первый тип операции, записываем данные о снеге на улице
     if (type == 1) {
       int street, snow_mm;
       std::cin >> street >> snow_mm;
       snow[street] += snow_mm;
+
+    // Если второй тип операции, выводим сумму снега от улицы street_from до улицы street_to включительно
     } else if (type == 2) {
       int street_from, street_to;
       std::cin >> street_from >> street_to;
-      // Пока ничего
-      std::cout << "Being developed" << '\n';
-    }
-  }
+      int sum = 0;
+      for (int i = street_from; i <= street_to; i++) {
+        sum += snow[i];
+      }
 
-  // Выводим значения в списке snow для проверки обработки входных данных
-  for (int i = 0; i <= num_of_streets; i++) {
-    std::cout << i << ": " << snow[i] << '\n';
+      std::cout << sum << '\n';
+    }
   }
 
   return 0;
