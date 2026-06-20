@@ -14,13 +14,27 @@ int main() {
     }
   }
 
-  // Выводим матрицу для проверки корректности ввода
+  // Ищем границы фигуры
+  int min_row = height;
+  int max_row = -1;
+  int min_col = width;
+  int max_col = -1;
+
+  // Ищем границы фигуры
   for (int i = 0; i < height; i++) {
     for (int j = 0; j < width; j++) {
-      std::cout << matrix[i][j] << " ";
+      if (matrix[i][j] == 1) {
+        if (i < min_row) min_row = i;
+        if (i > max_row) max_row = i;
+        if (j < min_col) min_col = j;
+        if (j > max_col) max_col = j;
+      }
     }
-    std::cout << '\n';
   }
+
+  // Выводим границы поиска для проверки корректности
+  std::cout << "min_row = " << min_row << ", max_row = " << max_row << '\n';
+  std::cout << "min_col = " << min_col << ", max_col = " << max_col << '\n';
 
   return 0;
 }
