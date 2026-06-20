@@ -14,7 +14,7 @@ int main() {
     }
   }
 
-  // Ищем границы фигуры
+  // Иннициализируем границы фигуры
   int min_row = height;
   int max_row = -1;
   int min_col = width;
@@ -32,9 +32,14 @@ int main() {
     }
   }
 
-  // Выводим границы поиска для проверки корректности
-  std::cout << "min_row = " << min_row << ", max_row = " << max_row << '\n';
-  std::cout << "min_col = " << min_col << ", max_col = " << max_col << '\n';
+  // Находим координаты прямоугольника
+  int rect_min_row = min_row - 1;
+  int rect_min_col = min_col - 1;
+  int rect_max_row = max_row + 1;
+  int rect_max_col = max_col + 1;
+
+  // Вывод финального результата
+  std::cout << rect_min_row << " " << rect_min_col << " " << rect_max_row << " " << rect_max_col << '\n';
 
   return 0;
 }
